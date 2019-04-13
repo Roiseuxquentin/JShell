@@ -1,25 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+
+import Shell from './components/shell.js'
+import Cmd from './components/cmd.js'
+import Igloo from './components/ascii.js'
+import './style.css'
 
 class App extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			steps: 0,
+		}
+	}
+	componentDidMount() {
+		sessionStorage.clear()
+	  sessionStorage.setItem('oldCmd' , '')  
+ 		sessionStorage.setItem('oldPath', '')
+    	document.addEventListener("click", this.focus, false);
+
+	}
+
+	focus() {
+		document.getElementById('cmd').focus()
+	}
+
+	onChange(event) {
+		this.setState({cmd : event.target.value})
+	}
+	
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="shell vertical">
+      	<Igloo />
+      	<h2>Hello pixel , Welcome to mind, Enjoy ur think !</h2>
+       	<Shell />
+      	<Cmd />
+      	<Cmd neuronnes />
       </div>
     );
   }
