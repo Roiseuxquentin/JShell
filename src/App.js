@@ -14,7 +14,7 @@ class App extends Component {
 			steps: 0,
 		}
 		this.execute = this.execute.bind(this)
-		this.historiK = this.historiK.bind(this)
+		this.log = this.log.bind(this)
 	}
 	componentDidMount() {
 		sessionStorage.clear()
@@ -44,7 +44,7 @@ class App extends Component {
 		document.getElementById('cmd').focus()
 	}
 
-	historiK() {
+	log() {
 		let array = []
 		let i = 0
 
@@ -64,7 +64,7 @@ class App extends Component {
       <div id="shell" className="shell vertical">
       	<Igloo />
       	<h2>Hello pixel , Welcome to mind, Enjoy ur think !</h2>
-      	{this.historiK()}
+      	{this.log()}
       	<Cmd neuronnes />
       </div>
     );

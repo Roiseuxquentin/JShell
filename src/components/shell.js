@@ -11,7 +11,7 @@ const Shell = (step) => {
 		return <Help />
 	}else {
 			return (<div>
-						<p className='FadeIn'>comos</p>
+						<p className='FadeIn'>...</p>
 			        </div>);
 	}
 

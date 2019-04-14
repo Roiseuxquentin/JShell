@@ -48,6 +48,7 @@ class  Cmd extends Component {
 		          <p id='path' className='path FadeIn'>{this.state.path}$</p>
 		          <input id='cmd' className='FadeIn' autoFocus={true} onKeyDown={event => this.valid(event)} readOnly
 		  					value={this.state.cmd} style={{width: `${(Number(this.state.cmd.length) * 11.5)}px`}} />
+		  				{/* Update input width for each letter */}
 		  				<p className='caret'></p>
 		        </div>
 			)
