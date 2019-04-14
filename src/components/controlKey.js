@@ -1,6 +1,6 @@
 const controleKey = (key) => {
 	
-	let i = 67
+	let i = 65
 	let j = 48
 	let authorizedKeys = []
 	

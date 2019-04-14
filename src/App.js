@@ -23,8 +23,13 @@ class App extends Component {
 	}
 
 	execute(event) {
-		if (event.keyCode === 13)
-		this.setState({steps : (this.state.steps + 1)})
+		if (event.keyCode === 13){
+			if (sessionStorage.getItem('oldCmd') === 'clear') {
+				this.setState({steps : 0})
+			} else {
+				this.setState({steps : (this.state.steps + 1)})
+			}
+		}
 	}
 	focus() {
 		document.getElementById('cmd').focus()
@@ -36,7 +41,11 @@ class App extends Component {
 		while (i++ < this.state.steps) {
 			array.push('')
 		}
-			return array.map(elt =>	<Shell />)
+			return array.map((elt, index) =>	{ return (
+													<div className='vertical' key={index} >
+      											<Cmd />
+													  <Shell /> 
+													</div> ) })
 
 	}
 
@@ -47,7 +56,6 @@ class App extends Component {
       	<Igloo />
       	<h2>Hello pixel , Welcome to mind, Enjoy ur think !</h2>
       	{this.historiK()}
-      	<Cmd />
       	<Cmd neuronnes />
       </div>
     );

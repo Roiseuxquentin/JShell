@@ -2,12 +2,13 @@
 import React, { Component } from 'react';
 
 import controlKey from './controlKey.js'
+
 class  Cmd extends Component {
 	constructor(props) {
 			super(props)
 			this.state = {
 				path : 'visitor@pixels:~',
-				cmd: ' ' ,
+				cmd: '' ,
 				width : 5,
 				refresh : false,
 				authorizedKeys : [],
@@ -25,12 +26,18 @@ class  Cmd extends Component {
 		if (this.state.authorizedKeys.includes(event.keyCode)){
 				this.setState({cmd : `${this.state.cmd}${event.key}`})
 		} else if (event.keyCode === 13 ) {
+			//	Enter key
 				sessionStorage.setItem('oldPath',  `${this.state.path}$`)
 				sessionStorage.setItem('oldCmd',  document.getElementById('cmd').value)
-				this.setState({cmd : " ",  path : `${this.state.path}`})
+				this.setState({cmd : "",  path : `${this.state.path}`})
+		} else if (event.keyCode === 8 ){
+			//	Delete key
+				let lastCharDeleted = this.state.cmd.split('')
+				lastCharDeleted.pop()
+				this.setState({cmd : lastCharDeleted.join('') })
 		} else {
-				if (event.keyCode !== 16) // SHIFT
-					console.log('%c# UNAUTHORIZED #','background:yellow;color:red;')
+				if (event.keyCode !== 16) // !SHIFT
+					console.log('%c UNAUTHORIZED ','background:red;color:white;')
 		}
   }
 
