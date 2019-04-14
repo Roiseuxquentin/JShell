@@ -9,6 +9,11 @@ body {
 	color: #DEDEDE;
 	 text-shadow: 0 0 2px #C8C8C8;
 }
+.shell {
+	margin-left: 15px;
+}
+
+
 h2 {
 	font-size: 1.2rem;
 }
