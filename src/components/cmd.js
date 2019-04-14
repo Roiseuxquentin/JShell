@@ -44,9 +44,9 @@ class  Cmd extends Component {
 	render() {
 		if (this.props.neuronnes) {
 			return (
-				<div id='input' className='horizontal cmdContainer'>
-		          <p id='path' className='path'>{this.state.path}$</p>
-		          <input id='cmd' autoFocus={true} onKeyDown={event => this.valid(event)} readOnly
+				<div id='input' className='horizontal cmdContainer FadeIn'>
+		          <p id='path' className='path FadeIn'>{this.state.path}$</p>
+		          <input id='cmd' className='FadeIn' autoFocus={true} onKeyDown={event => this.valid(event)} readOnly
 		  					value={this.state.cmd} style={{width: `${(Number(this.state.cmd.length) * 11.5)}px`}} />
 		  				<p className='caret'></p>
 		        </div>
@@ -54,9 +54,11 @@ class  Cmd extends Component {
 		}
 		else {
 			return (
-						<div className={`horizontal logContainer`} >
-		          <p className='path'>{sessionStorage.getItem('oldPath')}</p>
-		          <input className='log' disabled={true} value={sessionStorage.getItem('oldCmd')} />  
+						<div className='horizontal logContainer FadeIn' >
+		          <p className='path FadeIn'>{sessionStorage.getItem('oldPath')}</p>
+		          <input className='log FadeIn' disabled={true} value={(sessionStorage.getItem('history')) 
+		          				? JSON.parse(sessionStorage.getItem('history'))[this.props.step] 
+		          				: sessionStorage.getItem('oldCmd') } />  
 		        </div>
 				)
 		}

@@ -11,6 +11,7 @@ body {
 }
 .shell {
 	margin-left: 15px;
+
 }
 
 
@@ -58,7 +59,7 @@ input {
 }
 
 
-/* ---------------------------------------------------------- */
+/* GENERIQUE : style ------------------------------------------------------------- */
 
 .horizontal {
 	display : flex ;
@@ -68,4 +69,45 @@ input {
 }
 .invisble {
 	visibility: hidden;
+}
+
+/* GENERIQUE : animation ---------------------------------------------------------- */
+
+.FadeIn {
+    animation: fadein 0.3s;
+    -moz-animation: fadein 0.3s; /* Firefox */
+    -webkit-animation: fadein 0.3s; /* Safari et Chrome */
+    -o-animation: fadein 0.3s; /* Opera */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* sur Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* sur Safari et Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* sur Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
 }

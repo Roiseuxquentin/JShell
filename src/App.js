@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import Shell from './components/shell.js'
 import Cmd from './components/cmd.js'
 import Igloo from './components/ascii.js'
+
 import './style.css'
 
 class App extends Component {
@@ -13,27 +14,36 @@ class App extends Component {
 			steps: 0,
 		}
 		this.execute = this.execute.bind(this)
+		this.historiK = this.historiK.bind(this)
 	}
 	componentDidMount() {
 		sessionStorage.clear()
-	  sessionStorage.setItem('oldCmd' , '')  
- 		sessionStorage.setItem('oldPath', '')
   	document.addEventListener("click", this.focus, false);
   	document.addEventListener("keydown", this.execute, false);
 	}
 
 	execute(event) {
 		if (event.keyCode === 13){
+
+			let history = []
+			history.push(sessionStorage.getItem('oldCmd'))
+
+			if (sessionStorage.getItem('history')){
+				JSON.parse(sessionStorage.getItem('history')).map(elt => history.push(elt) ) }
+	
+			sessionStorage.setItem('history', JSON.stringify(history))
+	
 			if (sessionStorage.getItem('oldCmd') === 'clear') {
 				this.setState({steps : 0})
 			} else {
-				this.setState({steps : (this.state.steps + 1)})
+				this.setState({steps : (this.state.steps + 1) })
 			}
 		}
 	}
 	focus() {
 		document.getElementById('cmd').focus()
 	}
+
 	historiK() {
 		let array = []
 		let i = 0
@@ -41,14 +51,13 @@ class App extends Component {
 		while (i++ < this.state.steps) {
 			array.push('')
 		}
+
 			return array.map((elt, index) =>	{ return (
-													<div className='vertical' key={index} >
-      											<Cmd />
-													  <Shell /> 
-													</div> ) })
-
+													<div className='vertical FadeIn' key={index} >
+      											<Cmd step={index} />
+													  <Shell step={index} /> 
+													</div> ) }).reverse()
 	}
-
 
   render() {
     return (
