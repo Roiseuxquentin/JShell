@@ -10,14 +10,15 @@ const Help = () => {
 					"| |                                                | |",
 					"| | -help : display this menu                      | |",
 					"| | -clear: clear shell                            | |",
-					"| |                                                | |",
+					"| | -ls   : display current folder contents        | |",
+					"| | -cat <file> : display content of file          | |",
 					"| |                                                | |",
 					"| |________________________________________________| |",
 					"|____________________________________________________|",
 				].join('\n')
 
 		return (
-		<div className='igloo'>
+		<div className='igloo cursorDefault'>
 		  <pre>
         {help}
 		  </pre>

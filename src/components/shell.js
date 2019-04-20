@@ -1,25 +1,29 @@
 import React from 'react';
 
 import Help from './help.js'
+import Ls from './ls.js'
+import Cat from './cat.js'
 
 const Shell = (step) => {
-// console.log(JSON.parse(sessionStorage.getItem('historyOutput')))
-	// switch (JSON.parse(sessionStorage.getItem('historyOutput'))[step]) {
-	// 	case 'unauthorized' :
-	if (sessionStorage.getItem('oldCmd') === 'help' && (step.step === 0)) {
-		sessionStorage.setItem('oldCmd', '')
-		return <Help />
-	}else {
-			return (<div>
-						<p className='FadeIn'>...</p>
+
+	if (JSON.parse(sessionStorage.getItem('history'))[step.index].split(' ')[0] === 'cat') {
+			const file =  JSON.parse(sessionStorage.getItem('history'))[step.index]
+										.split(' ')
+										.filter(elt => elt!=='')[1]
+
+			return <Cat file={file} />		
+	}
+	switch (JSON.parse(sessionStorage.getItem('history'))[step.index]) {
+		case 'help' : 
+			return <Help />
+		case 'ls' :
+			return <Ls />
+		default : 
+			return (<div >
+						<p className=''>{`command not found: 
+						${JSON.parse(sessionStorage.getItem('history'))[step.index]}`}</p>
 			        </div>);
 	}
-
-	// 	case 'help' : 
-	// 		return <Help />
-	// 	default : 
-	// 		console.log('switch');	
-	// }
 }
 
 

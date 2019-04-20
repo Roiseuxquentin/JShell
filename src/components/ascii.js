@@ -10,7 +10,7 @@ const Igloo = () => {
 				].join('\n')
 
 		return (
-		<div className='igloo'>
+		<div className='igloo cursorDefault'>
 		  <pre>
             	{ascii}
 		  </pre>

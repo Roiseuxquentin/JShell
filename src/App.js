@@ -38,6 +38,9 @@ class App extends Component {
 			} else {
 				this.setState({steps : (this.state.steps + 1) })
 			}
+
+			// scroll to bottom
+			window.scrollTo(0,document.body.scrollHeight)
 		}
 	}
 	focus() {
@@ -53,9 +56,9 @@ class App extends Component {
 		}
 
 			return array.map((elt, index) =>	{ return (
-													<div className='vertical FadeIn' key={index} >
+													<div className='vertical' key={index} >
       											<Cmd step={index} />
-													  <Shell step={index} /> 
+													  <Shell index={index} /> 
 													</div> ) }).reverse()
 	}
 
@@ -63,7 +66,7 @@ class App extends Component {
     return (
       <div id="shell" className="shell vertical">
       	<Igloo />
-      	<h2>Hello pixel , Welcome to mind, Enjoy ur think !</h2>
+      	<h2 className='cursorDefault FadeIn' >Hello pixel , Welcome to mind, Enjoy ur think !</h2>
       	{this.log()}
       	<Cmd neuronnes />
       </div>
