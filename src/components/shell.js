@@ -5,25 +5,37 @@ import Ls from './ls.js'
 import Cat from './cat.js'
 
 const Shell = (step) => {
+	const cmd = JSON.parse(sessionStorage.getItem('history'))[step.index]
+							.split(' ')[0]
+	
+	if ( cmd === 'cat') {
+		const file =  JSON.parse(sessionStorage.getItem('history'))[step.index]
+									.split(' ')
+									.filter(elt => elt!=='')[1]
 
-	if (JSON.parse(sessionStorage.getItem('history'))[step.index].split(' ')[0] === 'cat') {
-			const file =  JSON.parse(sessionStorage.getItem('history'))[step.index]
-										.split(' ')
-										.filter(elt => elt!=='')[1]
-
-			return <Cat file={file} />		
+		return <Cat file={file} />		
 	}
-	switch (JSON.parse(sessionStorage.getItem('history'))[step.index]) {
+
+	switch (cmd) {
 		case 'help' : 
 			return <Help />
 		case 'ls' :
 			return <Ls />
+		case 'exit' :
+			exit()
+			break;
 		default : 
 			return (<div >
-						<p className=''>{`command not found: 
-						${JSON.parse(sessionStorage.getItem('history'))[step.index]}`}</p>
+								<p className=''>{`command not found: 
+								${JSON.parse(sessionStorage.getItem('history'))[step.index]}`}</p>
 			        </div>);
 	}
+}
+
+const exit = () => {
+	const home = window.history.length
+	window.close()
+	window.history.back(home - 1)
 }
 
 

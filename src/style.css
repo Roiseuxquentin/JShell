@@ -70,7 +70,7 @@ input {
 .vertical {
 	display : grid ;
 }
-.invisble {
+.invisible {
 	visibility: hidden;
 }
 

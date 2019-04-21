@@ -67,6 +67,7 @@ class App extends Component {
       <div id="shell" className="shell vertical">
       	<Igloo />
       	<h2 className='cursorDefault FadeIn' >Hello pixel , Welcome to mind, Enjoy ur think !</h2>
+      	<p className='cursorDefault' >For one better experience , press F11 and call help command</p>
       	{this.log()}
       	<Cmd neuronnes />
       </div>
