@@ -33,9 +33,9 @@ const Shell = (step) => {
 }
 
 const exit = () => {
-	const home = window.history.length
+	const logLength = window.history.length
 	window.close()
-	window.history.back(home - 1)
+	window.history.back(logLength - 1)
 }
 
 
