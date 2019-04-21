@@ -8,22 +8,20 @@ const Shell = (step) => {
 	const cmd = JSON.parse(sessionStorage.getItem('history'))[step.index]
 							.split(' ')[0]
 	
-	if ( cmd === 'cat') {
-		const file =  JSON.parse(sessionStorage.getItem('history'))[step.index]
-									.split(' ')
-									.filter(elt => elt!=='')[1]
-
-		return <Cat file={file} />		
-	}
-
 	switch (cmd) {
 		case 'help' : 
 			return <Help />
-		case 'ls' :
-			return <Ls />
 		case 'exit' :
 			exit()
 			break;
+		case 'ls' :
+			return <Ls />
+		case 'cat' :
+			const file =  JSON.parse(sessionStorage.getItem('history'))[step.index]
+												.split(' ')
+												.filter(elt => elt!=='')[1]
+
+			return <Cat file={file} />		
 		default : 
 			return (<div >
 								<p className=''>{`command not found: 
@@ -34,9 +32,11 @@ const Shell = (step) => {
 
 const exit = () => {
 	const logLength = window.history.length
+
+	// if tab was open with Js
 	window.close()
+	// else back to first page logged in window's history
 	window.history.back(logLength - 1)
 }
-
 
 export default Shell;

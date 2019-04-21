@@ -43,6 +43,7 @@ class App extends Component {
 			window.scrollTo(0,document.body.scrollHeight)
 		}
 	}
+	
 	focus() {
 		document.getElementById('cmd').focus()
 	}
